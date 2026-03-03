@@ -1,28 +1,35 @@
 # PM Skills for Cursor (& other AI tools)
 
-A curated collection of PM skills for AI coding assistants — with a smart router that finds the right framework for any situation.
+A curated collection of AI skills — PM frameworks and productivity tools — with a smart router that finds the right framework for any situation.
 
-**93 skills across 2 libraries + 1 router to rule them all.**
-
----
-
-## What's in here
-
-| | |
-|---|---|
-| 🧭 **`/pmskill` router** | Dump your situation in plain language, get routed to the exact right skill — no framework knowledge required |
-| 📦 **[phuryn/pm-skills](https://github.com/phuryn/pm-skills)** | 65 structured PM skills across discovery, strategy, execution, GTM, analytics, and more |
-| ⚡ **[awesome-pm-skills](https://github.com/menkesu/awesome-pm-skills)** | 28 opinionated skills based on frameworks from Marty Cagan, Teresa Torres, April Dunford, and others |
+**93 PM skills · 2 productivity tools · 1 router to rule them all.**
 
 ---
 
-## How the router works
+## Structure
 
-Type `/pmskill` and just **dump your situation** — messy brain dump, voice note, bullet points, whatever.
+```
+.cursor/skills/
+├── 🧭 pmskill/              ← router: /pmskill to start
+│
+├── ── PM Frameworks ──
+├── pm-skills/               ← 65 skills (phuryn/pm-skills)
+├── awesome-pm-skills/       ← 28 skills (menkesu/awesome-pm-skills)
+│
+└── ── Productivity Tools ──
+    ├── knowledge-intake/    ← ingest docs into structured knowledge
+    └── batch-migration/     ← migrate content in bulk
+```
+
+---
+
+## The `/pmskill` Router
+
+Type `/pmskill` and **dump your situation** — messy brain dump, voice note, bullets, whatever.
 
 The router infers what you need and picks a mode:
 
-**Deliberate mode** (you know roughly what you need):
+**Deliberate** (you know roughly what you need):
 ```
 → Use: create-prd
 Why: You need a structured spec before your engineering sync tomorrow.
@@ -30,83 +37,54 @@ Load: .cursor/skills/pm-skills/pm-execution/skills/create-prd/SKILL.md
 To start: Paste your feature idea and I'll build the PRD.
 ```
 
-**Brainstorm mode** (you're exploring):
+**Brainstorm** (you're exploring):
 ```
-Brainstorm mode — 3 angles on your pricing problem:
+3 angles on your pricing problem:
 
-1. competitor-analysis — understand what the market charges and why
-2. pricing-strategy    — design your model, test willingness-to-pay
-3. value-proposition   — reframe what you're selling before pricing it
+1. competitor-analysis  — understand what the market charges and why
+2. pricing-strategy     — design your model, test willingness-to-pay
+3. value-proposition    — reframe what you're selling before pricing it
 
-Suggested chain: run 1 first → feed output into 3 → then 2.
+Suggested chain: run 1 → feed into 3 → then 2.
 ```
 
-No upfront questions. No framework knowledge needed. Just describe where you're stuck.
+No framework knowledge needed. Just describe where you're stuck.
 
 ---
 
-## Install
+## PM Skills (93 skills across 2 libraries)
 
-### Cursor
+### [phuryn/pm-skills](https://github.com/phuryn/pm-skills) — 65 skills, 8 plugins
+Built on Teresa Torres, Marty Cagan, Alberto Savoia, April Dunford frameworks.
 
-```bash
-# Clone into your project's .cursor/skills folder
-cd your-project/.cursor/skills
-git clone --recurse-submodules https://github.com/aylonfisch/skills.git .
+| Plugin | Skills |
+|--------|--------|
+| `pm-product-discovery` | ideation, experiments, OST, assumptions, interviews |
+| `pm-product-strategy` | strategy canvas, vision, value prop, pricing, SWOT |
+| `pm-execution` | PRDs, OKRs, roadmaps, sprints, retros, user stories |
+| `pm-market-research` | personas, journey maps, market sizing, competitor analysis |
+| `pm-data-analytics` | SQL, cohort analysis, A/B test analysis |
+| `pm-go-to-market` | GTM strategy, ICP, growth loops, battlecards |
+| `pm-marketing-growth` | positioning, naming, North Star metric |
+| `pm-toolkit` | resume review, NDA, proofreading |
 
-# Or clone anywhere and symlink
-git clone --recurse-submodules https://github.com/aylonfisch/skills.git ~/pm-skills
-```
+### [menkesu/awesome-pm-skills](https://github.com/menkesu/awesome-pm-skills) — 28 skills
+Opinionated playbooks from real PM practitioners.
 
-Then in Cursor, type `/pmskill` to start.
-
-### Claude Code
-
-```bash
-git clone --recurse-submodules https://github.com/aylonfisch/skills.git ~/.claude/skills/pm
-```
-
-### Gemini CLI / Codex CLI / Kiro
-
-```bash
-# Clone and copy skills to your tool's skills folder
-git clone --recurse-submodules https://github.com/aylonfisch/skills.git /tmp/pm-skills
-cp -r /tmp/pm-skills/.cursor/skills/* ~/.gemini/skills/   # Gemini
-cp -r /tmp/pm-skills/.cursor/skills/* ~/.codex/skills/    # Codex
-```
+`ai-product-patterns` · `ship-decisions` · `positioning-craft` · `strategic-storytelling` · `exec-comms` · `decision-frameworks` · `jtbd-building` · `growth-embedded` · `continuous-discovery` · `quality-speed` · `influence-craft` · `strategic-pm` · and more.
 
 ---
 
-## What's included
+## Productivity Tools
 
-### The Router — `/pmskill`
-`.cursor/skills/pmskill/SKILL.md`
-
-Takes free-form input, infers your stage + deliverable, recommends a single skill (deliberate) or a chained set (brainstorm). Max 1 clarifying question if genuinely ambiguous.
-
-### pm-skills (65 skills, 8 plugins)
-From [phuryn/pm-skills](https://github.com/phuryn/pm-skills) — built on Teresa Torres, Marty Cagan, Alberto Savoia, April Dunford frameworks.
-
-- `pm-product-discovery` — ideation, experiments, OST, customer interviews
-- `pm-product-strategy` — strategy canvas, vision, value prop, pricing, SWOT
-- `pm-execution` — PRDs, OKRs, roadmaps, sprints, retros, user stories
-- `pm-market-research` — personas, journey maps, market sizing, competitor analysis
-- `pm-data-analytics` — SQL, cohort analysis, A/B test analysis
-- `pm-go-to-market` — GTM strategy, ICP, growth loops, battlecards
-- `pm-marketing-growth` — positioning, naming, North Star metric
-- `pm-toolkit` — resume review, NDA, proofreading
-
-### awesome-pm-skills (28 skills)
-From [awesome-pm-skills](https://github.com/menkesu/awesome-pm-skills) — opinionated skills based on real PM playbooks.
-
-`ai-product-patterns` · `ship-decisions` · `positioning-craft` · `strategic-storytelling` · `exec-comms` · `decision-frameworks` · `jtbd-building` · `growth-embedded` · `continuous-discovery` · and more.
-
-### SKILLS-INDEX.md
-Full lookup table with all 93 skills, paths, and pre-built chains for common situations (new feature, launch prep, quarterly planning, pricing decision, etc.).
+| Skill | What it does |
+|-------|-------------|
+| `knowledge-intake` | Ingest a document, meeting, or source into structured knowledge |
+| `batch-migration` | Migrate content in bulk across formats or systems |
 
 ---
 
-## Skill chains
+## Skill Chains
 
 Pre-built sequences for common PM workflows:
 
@@ -121,8 +99,37 @@ Pre-built sequences for common PM workflows:
 
 ---
 
+## Install
+
+### Cursor
+
+```bash
+# Clone into your project's .cursor/skills folder
+cd your-project
+git clone --recurse-submodules https://github.com/aylonfisch/skills.git .cursor/skills
+```
+
+Then type `/pmskill` in Cursor to start.
+
+### Other AI tools
+
+```bash
+git clone --recurse-submodules https://github.com/aylonfisch/skills.git
+
+# Gemini CLI
+cp -r skills/.cursor/skills/* ~/.gemini/skills/
+
+# Codex CLI
+cp -r skills/.cursor/skills/* ~/.codex/skills/
+
+# Kiro
+cp -r skills/.cursor/skills/* ~/.kiro/skills/
+```
+
+---
+
 ## Credits
 
 - [phuryn/pm-skills](https://github.com/phuryn/pm-skills) by Paweł Huryn / [Product Compass](https://www.productcompass.pm)
-- [awesome-pm-skills](https://github.com/menkesu/awesome-pm-skills) by menkesu
-- Router and index by [@aylonfisch](https://github.com/aylonfisch)
+- [menkesu/awesome-pm-skills](https://github.com/menkesu/awesome-pm-skills)
+- Router, index, and productivity skills by [@aylonfisch](https://github.com/aylonfisch)

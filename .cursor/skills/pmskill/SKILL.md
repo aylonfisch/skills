@@ -85,9 +85,9 @@ Ask at most **1 question** if the situation is genuinely ambiguous. Never more. 
 
 All skills and paths are in `SKILLS-INDEX.md` at the repo root.
 
-Base paths (relative to where skills are installed):
-- **pm-skills** library: `pm-skills/[plugin]/skills/[skill-name]/SKILL.md`
-- **awesome-pm-skills** library: `awesome-pm-skills/[skill-name]/SKILL.md`
+Base paths (relative to repo root):
+- **pm-skills** library: `.cursor/skills/pm-skills/[plugin]/skills/[skill-name]/SKILL.md`
+- **awesome-pm-skills** library: `.cursor/skills/awesome-pm-skills/[skill-name]/SKILL.md`
 
 ---
 
