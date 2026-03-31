@@ -1,0 +1,6 @@
+[submodule ".cursor/skills/pm-skills"]
+	path = .cursor/skills/pm-skills
+	url = https://github.com/phuryn/pm-skills.git
+[submodule ".cursor/skills/awesome-pm-skills"]
+	path = .cursor/skills/awesome-pm-skills
+	url = https://github.com/menkesu/awesome-pm-skills.git
