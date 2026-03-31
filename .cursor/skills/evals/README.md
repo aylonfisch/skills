@@ -6,9 +6,10 @@ A self-improvement loop for AI agent systems. Captures bad responses, diagnoses 
 
 ## Install
 
-1. Copy `.cursor/skills/evals/SKILL.md` into your own `.cursor/skills/evals/` folder
-2. Copy `Work/Evals/evals-log.md` to wherever you store logs (update the path inside `SKILL.md` if needed)
-3. That's it — no dependencies
+1. Copy the entire `.cursor/skills/evals/` folder into your own `.cursor/skills/` directory
+2. That's it — no dependencies
+
+The folder includes `SKILL.md` (the workflow), `README.md` (this file), and `evals-log.md` (the log template).
 
 ---
 

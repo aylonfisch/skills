@@ -1,135 +1,101 @@
-# PM Skills for Cursor (& other AI tools)
+# AI Skills for Cursor (& other AI tools)
 
-A curated collection of AI skills — PM frameworks and productivity tools — with a smart router that finds the right framework for any situation.
+A collection of shareable agent skills — PM workflows, productivity tools, and a self-improvement loop for AI systems.
 
-**93 PM skills · 2 productivity tools · 1 router to rule them all.**
+Built for Cursor but adaptable to any AI tool that supports skill/command files.
 
 ---
 
-## Structure
+## What's Here
 
 ```
 .cursor/skills/
-├── 🧭 pmskill/              ← router: /pmskill to start
+├── pmskill/              ← Router: finds the right PM framework for any situation
+├── evals/                ← Self-improvement loop: capture bad responses, fix the root cause
+├── knowledge-intake/     ← Ingest documents into a structured knowledge base
+├── batch-migration/      ← Migrate items in bulk across systems
 │
-├── ── PM Frameworks ──
-├── pm-skills/               ← 65 skills (phuryn/pm-skills)
-├── awesome-pm-skills/       ← 28 skills (menkesu/awesome-pm-skills)
-│
-└── ── Productivity Tools ──
-    ├── knowledge-intake/    ← ingest docs into structured knowledge
-    └── batch-migration/     ← migrate content in bulk
+├── pm-skills/            ← 65 PM framework skills (via submodule)
+└── awesome-pm-skills/    ← 28 PM craft skills (via submodule)
 ```
+
+**93 PM framework skills · 4 productivity skills · 1 router**
+
+See [SKILLS-INDEX.md](SKILLS-INDEX.md) for the full lookup table.
 
 ---
 
-## The `/pmskill` Router
+## Install a Skill
 
-Type `/pmskill` and **dump your situation** — messy brain dump, voice note, bullets, whatever.
-
-The router infers what you need and picks a mode:
-
-**Deliberate** (you know roughly what you need):
-```
-→ Use: create-prd
-Why: You need a structured spec before your engineering sync tomorrow.
-Load: .cursor/skills/pm-skills/pm-execution/skills/create-prd/SKILL.md
-To start: Paste your feature idea and I'll build the PRD.
-```
-
-**Brainstorm** (you're exploring):
-```
-3 angles on your pricing problem:
-
-1. competitor-analysis  — understand what the market charges and why
-2. pricing-strategy     — design your model, test willingness-to-pay
-3. value-proposition    — reframe what you're selling before pricing it
-
-Suggested chain: run 1 → feed into 3 → then 2.
-```
-
-No framework knowledge needed. Just describe where you're stuck.
-
----
-
-## PM Skills (93 skills across 2 libraries)
-
-### [phuryn/pm-skills](https://github.com/phuryn/pm-skills) — 65 skills, 8 plugins
-Built on Teresa Torres, Marty Cagan, Alberto Savoia, April Dunford frameworks.
-
-| Plugin | Skills |
-|--------|--------|
-| `pm-product-discovery` | ideation, experiments, OST, assumptions, interviews |
-| `pm-product-strategy` | strategy canvas, vision, value prop, pricing, SWOT |
-| `pm-execution` | PRDs, OKRs, roadmaps, sprints, retros, user stories |
-| `pm-market-research` | personas, journey maps, market sizing, competitor analysis |
-| `pm-data-analytics` | SQL, cohort analysis, A/B test analysis |
-| `pm-go-to-market` | GTM strategy, ICP, growth loops, battlecards |
-| `pm-marketing-growth` | positioning, naming, North Star metric |
-| `pm-toolkit` | resume review, NDA, proofreading |
-
-### [menkesu/awesome-pm-skills](https://github.com/menkesu/awesome-pm-skills) — 28 skills
-Opinionated playbooks from real PM practitioners.
-
-`ai-product-patterns` · `ship-decisions` · `positioning-craft` · `strategic-storytelling` · `exec-comms` · `decision-frameworks` · `jtbd-building` · `growth-embedded` · `continuous-discovery` · `quality-speed` · `influence-craft` · `strategic-pm` · and more.
-
----
-
-## Productivity Tools
-
-| Skill | What it does |
-|-------|-------------|
-| `knowledge-intake` | Ingest a document, meeting, or source into structured knowledge |
-| `batch-migration` | Migrate content in bulk across formats or systems |
-
----
-
-## Skill Chains
-
-Pre-built sequences for common PM workflows:
-
-| Situation | Chain |
-|-----------|-------|
-| New feature from scratch | `identify-assumptions` → `opportunity-solution-tree` → `create-prd` → `pre-mortem` |
-| Launch prep | `positioning-craft` → `launch-execution` → `competitive-battlecard` → `release-notes` |
-| Quarterly planning | `strategic-pm` → `brainstorm-okrs` → `outcome-roadmap` → `sprint-plan` |
-| Validate a risky bet | `identify-assumptions` → `prioritize-assumptions` → `brainstorm-experiments` |
-| Pricing decision | `competitor-analysis` → `pricing-strategy` → `monetization-strategy` → `value-prop-statements` |
-| Discovery sprint | `continuous-discovery` → `interview-script` → `summarize-interview` → `user-feedback-system` |
-
----
-
-## Install
-
-### Cursor
+Copy any skill folder into your `.cursor/skills/` directory (or equivalent for your AI tool):
 
 ```bash
-# Clone into your project's .cursor/skills folder
-cd your-project
-git clone --recurse-submodules https://github.com/aylonfisch/skills.git .cursor/skills
+# Example: install the evals skill
+cp -r .cursor/skills/evals/ /your-project/.cursor/skills/evals/
 ```
 
-Then type `/pmskill` in Cursor to start.
+Each skill folder contains a `SKILL.md` with full instructions. Some also include:
+- `README.md` — install guide and usage notes
+- `evals-log.md` — log template (evals skill only)
 
-### Other AI tools
+---
+
+## Skills
+
+### `evals` — Self-Improvement Loop
+
+Captures bad AI responses, diagnoses root causes, applies fixes to the right artifact, and generates regression tests.
+
+**Trigger:** `"flag this"` / `"run eval"` / `"close session"`
+
+[→ Install guide](.cursor/skills/evals/README.md)
+
+---
+
+### `pmskill` — PM Framework Router
+
+Finds the right PM framework for any situation across 93 skills. Describe what you're trying to do and it routes you to the right skill.
+
+**Trigger:** `"what framework should I use for..."` or `/pmskill`
+
+---
+
+### `knowledge-intake` — Document Ingestion
+
+Routes and formats documents into a structured knowledge base using established templates and conventions.
+
+**Trigger:** `"intake this doc"` / `"add to knowledge base"`
+
+---
+
+### `batch-migration` — Bulk Migration
+
+Migrates items in bulk across systems with validation and rollback support.
+
+**Trigger:** `"batch migrate [items]"`
+
+---
+
+## PM Skill Libraries (Submodules)
+
+This repo includes two external PM skill libraries as git submodules:
+
+| Library | Skills | Source |
+|---|---|---|
+| `pm-skills` | 65 skills across Discovery, Strategy, Execution, Research, Analytics, GTM | [phuryn/pm-skills](https://github.com/phuryn/pm-skills) |
+| `awesome-pm-skills` | 28 skills across craft, leadership, communication | [menkesu/awesome-pm-skills](https://github.com/menkesu/awesome-pm-skills) |
+
+To pull submodules after cloning:
 
 ```bash
 git clone --recurse-submodules https://github.com/aylonfisch/skills.git
-
-# Gemini CLI
-cp -r skills/.cursor/skills/* ~/.gemini/skills/
-
-# Codex CLI
-cp -r skills/.cursor/skills/* ~/.codex/skills/
-
-# Kiro
-cp -r skills/.cursor/skills/* ~/.kiro/skills/
 ```
 
 ---
 
-## Credits
+## Contributing
 
-- [phuryn/pm-skills](https://github.com/phuryn/pm-skills) by Paweł Huryn / [Product Compass](https://www.productcompass.pm)
-- [menkesu/awesome-pm-skills](https://github.com/menkesu/awesome-pm-skills)
-- Router, index, and productivity skills by [@aylonfisch](https://github.com/aylonfisch)
+Skills should be:
+- **Self-contained** — one folder, one `SKILL.md`, no external dependencies
+- **Tool-agnostic** — written in plain markdown, adaptable beyond Cursor
+- **Trigger-driven** — clear natural language phrases that activate the skill
