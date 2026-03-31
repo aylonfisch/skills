@@ -35,6 +35,52 @@ Use this skill when you need to:
 
 ---
 
+## Step 0: Handle PDF Input
+
+**If the document is a PDF file (.pdf), extract text before classifying.**
+
+### Check if tools are available:
+```bash
+pdftotext -v 2>&1 && python3 -c "import pdfplumber; print('pdfplumber ok')" 2>/dev/null
+```
+
+### If tools available — extract first:
+
+**Standard extraction (most PDFs):**
+```bash
+pdftotext -layout "input.pdf" "output.md"
+```
+
+**For PDFs with tables (financial docs, feature comparisons):**
+```python
+python3 -c "
+import pdfplumber, sys
+with pdfplumber.open(sys.argv[1]) as pdf:
+    for page in pdf.pages:
+        print(page.extract_text())
+" "input.pdf" > "output.md"
+```
+
+**For bulk extraction of a folder:**
+```bash
+find "[folder]" -name "*.pdf" | while read f; do
+  pdftotext -layout "$f" "${f%.pdf}.md" && echo "✅ ${f%.pdf}.md"
+done
+```
+
+### If tools not available:
+- Cursor can read PDFs natively via the Read tool — proceed directly
+- For large batches (10+ PDFs), strongly recommend installing tools first:
+  ```bash
+  brew install poppler && pip3 install pdfplumber --break-system-packages
+  ```
+- See `.cursor/skills/pdf-extract/SKILL.md` once created for full guidance
+
+### After extraction:
+Proceed to Step 1 using the extracted text. Save the `.md` alongside the original PDF so it's reusable in future sessions.
+
+---
+
 ## Step 1: Classify Document Type
 
 **Ask user or analyze content to determine one of four types:**
@@ -661,6 +707,9 @@ Is it shipped? (has ship date, live in production)
 **"We just shipped a feature and I have the PRD"**
 → Check if already in Knowledge, if not: intake as PRD, extract domain knowledge
 
+**"I have a PDF / folder of PDFs to intake"**
+→ Step 0 first: extract to MD using pdftotext or pdfplumber, then classify and intake normally. Save .md alongside PDF for reuse.
+
 ---
 
 ## Tips for Success
@@ -675,6 +724,7 @@ Is it shipped? (has ship date, live in production)
 
 ---
 
-**Skill Version:** 1.0  
+**Skill Version:** 1.1  
 **Created:** Feb 14, 2026  
-**Last Updated:** Feb 14, 2026
+**Last Updated:** Feb 20, 2026  
+**Changelog:** v1.1 — Added Step 0: PDF input handling (pdftotext + pdfplumber)
